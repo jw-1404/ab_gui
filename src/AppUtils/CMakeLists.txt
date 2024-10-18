@@ -46,8 +46,8 @@ set(CORE_SOURCES
     utils_screen.h
     utils_sysinfo.cpp
     utils_sysinfo.h
-    utils_wifi.cpp
-    utils_wifi.h
+
+
     utils_versionchecker.h)
 
 # OS specific sources & dependencies
