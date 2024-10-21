@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-export APP_NAME="QmlAppTemplate"
-export APP_VERSION=0.7
+export APP_NAME="ab_gui"
+export APP_VERSION=0.1
 export GIT_VERSION=$(git rev-parse --short HEAD)
 
 echo "> $APP_NAME packager (Linux x86_64) [v$APP_VERSION]"
