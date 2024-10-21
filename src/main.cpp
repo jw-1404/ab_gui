@@ -70,7 +70,7 @@ int main(int argc, char *argv[])
     engine_context->setContextProperty("utilsSysInfo", utilsSysInfo);
 
     // Load the main view
-    engine.load(QUrl(QStringLiteral("qrc:/qml/DesktopApplication.qml")));
+    engine.load(QUrl(QStringLiteral("qrc:/qml/main.qml")));
     if (engine.rootObjects().isEmpty()) {
         qWarning() << "Cannot init QmlApplicationEngine!";
         return EXIT_FAILURE;
