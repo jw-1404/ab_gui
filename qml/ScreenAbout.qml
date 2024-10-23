@@ -16,11 +16,6 @@ Loader {
         appContent.state = "About"
     }
 
-    function backAction() {
-        if (screenAbout.status === Loader.Ready)
-            screenAbout.item.backAction()
-    }
-
     ////////////////////////////////////////////////////////////////////////////
 
     active: false
@@ -32,15 +27,8 @@ Loader {
         contentWidth: -1
         contentHeight: contentColumn.height
 
-        boundsBehavior: isDesktop ? Flickable.OvershootBounds : Flickable.DragAndOvershootBounds
+        boundsBehavior: Flickable.OvershootBounds
         ScrollBar.vertical: ScrollBar { visible: false }
-
-        ////////
-
-        function backAction() {
-            if (isDesktop) screenDesktopComponents.loadScreen()
-            else if (isMobile) screenMobileComponents.loadScreen()
-        }
 
         ////////
 
@@ -75,7 +63,7 @@ Loader {
                         height: 80
                         anchors.verticalCenter: parent.verticalCenter
 
-                        source: "qrc:/assets/logo.png"
+                        source: "qrc:/logos/logo.png"
                         sourceSize: Qt.size(width, height)
                     }
 

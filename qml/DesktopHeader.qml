@@ -28,6 +28,9 @@ Rectangle {
     signal menuComponentsClicked()
     signal menuSettingsClicked()
     signal menuAboutClicked()
+    signal menuDeviceClicked()
+    signal menuHostInfosClicked()
+    signal menuMainViewClicked()
 
     ////////////////////////////////////////////////////////////////////////////
 
@@ -38,39 +41,85 @@ Rectangle {
         target: null
     }
 
-    RoundButtonSunken { // buttonBack
-        anchors.top: parent.top
-        anchors.topMargin: 6
+    Image {
+        id: logoImage
         anchors.left: parent.left
-        anchors.leftMargin: 8
-        anchors.bottom: parent.bottom
-        anchors.bottomMargin: 6
-        width: height
-
-        enabled: (source !== "qrc:/assets/icons/material-symbols/arrow_back.svg" || wideMode)
-        visible: enabled
-
-        colorBackground: Theme.colorHeader
-        colorHighlight: Theme.colorHeaderHighlight
-        colorIcon: Theme.colorHeaderContent
-
-        source: "qrc:/assets/icons/material-symbols/arrow_back.svg"
-        onClicked: backButtonClicked()
+        anchors.leftMargin: 6
+        width: appHeader.headerHeight
+        height: appHeader.headerHeight
+        fillMode: Image.PreserveAspectFit
+        source: "qrc:/logos/logo.png"
     }
 
-    Text { // title
-        anchors.left: parent.left
-        anchors.leftMargin: 72
-        anchors.verticalCenter: parent.verticalCenter
+        // Text { // title
+        //     id: menuTitle
 
-        visible: wideMode
-        text: appHeader.headerTitle
-        font.bold: true
-        font.pixelSize: Theme.fontSizeHeader
-        color: Theme.colorHeaderContent
-    }
+        //     anchors.left: parent.left
+        //     anchors.verticalCenter: parent.verticalCenter
 
+        //     visible: wideMode
+        //     text: appHeader.headerTitle
+        //     font.bold: true
+        //     font.pixelSize: Theme.fontSizeHeader
+        //     color: Theme.colorHeaderContent
+        // }
     ////////////////////////////////////////////////////////////////////////////
+
+    Row { // menus
+        anchors.left: logoImage.right
+        anchors.top: parent.top
+        anchors.bottom: parent.bottom
+
+        spacing: 12
+        visible: true
+
+        ////////////
+
+        Row {
+            id: menuMain
+            anchors.left: menuTitle.right
+            anchors.leftMargin: 12
+
+            DesktopHeaderItem {
+                id: menuMainView
+                height: appHeader.height
+
+                colorContent: Theme.colorHeaderContent
+                colorHighlight: Theme.colorHeaderHighlight
+                highlightMode: "background"
+
+                highlighted: (appContent.state === "MainView")
+                text: "设备状态"
+                onClicked: menuMainViewClicked()
+            }
+
+            DesktopHeaderItem {
+                id: menuHostInfos
+                height: appHeader.height
+
+                colorContent: Theme.colorHeaderContent
+                colorHighlight: Theme.colorHeaderHighlight
+                highlightMode: "background"
+
+                highlighted: (appContent.state === "HostInfos")
+                text: "刻度定义"
+                onClicked: menuHostInfosClicked()
+            }
+
+            DesktopHeaderItem {
+                id: menuDevice
+                height: appHeader.height
+
+                colorContent: Theme.colorHeaderContent
+                colorHighlight: Theme.colorHeaderHighlight
+                highlightMode: "background"
+
+                highlighted: (appContent.state === "Device")
+                source: "qrc:/assets/icons/material-icons/duotone/info.svg"
+                onClicked: menuDeviceClicked()
+            }
+        }
+    }
 
     Row { // menus
         anchors.top: parent.top
@@ -83,112 +132,8 @@ Rectangle {
         ////////////
 
         Row {
-            id: menuDesktopComponents
-            anchors.verticalCenter: parent.verticalCenter
+            id: menuAuxiliary
 
-            spacing: 12
-            visible: (appContent.state === "DesktopComponents")
-
-            ButtonFlat {
-                id: buttonRefresh
-                anchors.verticalCenter: parent.verticalCenter
-                width: 180
-
-                source: "qrc:/assets/icons/material-symbols/autorenew.svg"
-                text: qsTr("Animate this")
-
-                color: Theme.colorHeaderHighlight
-
-                animation: "rotate"
-                animationRunning: isclicked
-
-                property bool isclicked: false
-                onClicked: isclicked = !isclicked
-            }
-
-            ButtonFlat {
-                id: buttonEnable
-                anchors.verticalCenter: parent.verticalCenter
-                width: 180
-
-                color: Theme.colorHeaderHighlight
-
-                text: componentsEnabled ? qsTr("Disable components") : qsTr("Enable components")
-                onClicked: componentsEnabled = !componentsEnabled
-            }
-
-            ////////////
-
-            Rectangle { // separator
-                anchors.verticalCenter: parent.verticalCenter
-                height: 40
-                width: Theme.componentBorderWidth
-                color: Theme.colorHeaderHighlight
-            }
-
-            ////////////
-
-            RoundButtonSunken { //  buttonMenu
-                anchors.top: parent.top
-                anchors.bottom: parent.bottom
-                width: height
-
-                colorBackground: Theme.colorHeader
-                colorHighlight: Theme.colorHeaderHighlight
-                colorIcon: Theme.colorHeaderContent
-
-                source: "qrc:/assets/icons/material-symbols/more_vert.svg"
-                onClicked: actionMenu.open()
-
-                ActionMenu_floating {
-                    id: actionMenu
-                    width: 240
-
-                    titleTxt: "back"
-                    titleSrc: "qrc:/assets/icons/material-symbols/chevron_left.svg"
-
-                    model: ListModel {
-                        id: lmActionMenu
-                        ListElement { t: "itm"; idx: 1; txt: "Action 1"; src: "qrc:/assets/icons/material-symbols/accessibility.svg"; }
-                        ListElement { t: "itm"; idx: 2; txt: "Action 2"; src: "qrc:/assets/icons/material-symbols/accessibility.svg"; }
-                        ListElement { t: "sep"; }
-                        ListElement { t: "itm"; idx: 3; txt: "Action 3"; src: "qrc:/assets/icons/material-symbols/accessibility.svg"; }
-                    }
-
-                    onMenuSelected: (index) => {
-                        //console.log("ActionMenu clicked #" + index)
-                    }
-                }
-            }
-
-            ////////////
-
-            Rectangle { // separator
-                anchors.verticalCenter: parent.verticalCenter
-                height: 40
-                width: Theme.componentBorderWidth
-                color: Theme.colorHeaderHighlight
-                visible: (menuMain.visible)
-            }
-        }
-
-        ////////////
-
-        Row {
-            id: menuMain
-
-            DesktopHeaderItem {
-                id: menuComponents
-                height: appHeader.height
-
-                colorContent: Theme.colorHeaderContent
-                colorHighlight: Theme.colorHeaderHighlight
-                highlightMode: "background"
-
-                highlighted: (appContent.state === "DesktopComponents")
-                source: "qrc:/assets/icons/material-icons/duotone/touch_app.svg"
-                onClicked: menuComponentsClicked()
-            }
             DesktopHeaderItem {
                 id: menuSettings
                 height: appHeader.height
@@ -201,6 +146,7 @@ Rectangle {
                 source: "qrc:/assets/icons/material-icons/duotone/tune.svg"
                 onClicked: menuSettingsClicked()
             }
+
             DesktopHeaderItem {
                 id: menuAbout
                 height: appHeader.height
@@ -218,38 +164,8 @@ Rectangle {
 
     ////////////
 
-    CsdWindows { }
+    // CsdWindows { }
 
-    CsdLinux { }
+    // CsdLinux { }
 
-    ////////////
-
-    Rectangle { // separator
-        anchors.left: parent.left
-        anchors.right: parent.right
-        anchors.bottom: parent.bottom
-
-        visible: !headerUnicolor
-        height: 2
-        opacity: 0.5
-        color: Theme.colorHeaderHighlight
-
-        Rectangle { // shadow
-            anchors.top: parent.bottom
-            anchors.left: parent.left
-            anchors.right: parent.right
-
-            height: 8
-            opacity: 0.66
-            visible: false
-
-            gradient: Gradient {
-                orientation: Gradient.Vertical
-                GradientStop { position: 0.0; color: Theme.colorHeaderHighlight; }
-                GradientStop { position: 1.0; color: Theme.colorBackground; }
-            }
-        }
-    }
-
-    ////////////
 }

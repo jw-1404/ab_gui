@@ -118,14 +118,6 @@ ApplicationWindow {
     }
 
     Shortcut {
-        sequences: [StandardKey.Back, StandardKey.Backspace]
-        onActivated: backAction()
-    }
-    Shortcut {
-        sequences: [StandardKey.Forward]
-        onActivated: forwardAction()
-    }
-    Shortcut {
         sequence: StandardKey.Preferences
         onActivated: screenSettings.loadScreen()
     }

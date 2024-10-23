@@ -12,8 +12,4 @@ Item {
         else if (isMobile) screenMobileComponents.loadScreen()
         else appContent.state = "MainView"
     }
-
-    function backAction() {
-        //
-    }
 }

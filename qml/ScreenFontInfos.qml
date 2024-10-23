@@ -16,11 +16,6 @@ Loader {
         appContent.state = "FontInfos"
     }
 
-    function backAction() {
-        if (screenFontInfos.status === Loader.Ready)
-            screenFontInfos.item.backAction()
-    }
-
     ////////////////////////////////////////////////////////////////////////////
 
     active: false
@@ -40,13 +35,6 @@ Loader {
 
         property int wwww: Math.floor((grid.width) / (singleColumn ? 1 : 2))
         property int hhhh: Math.floor((grid.height) / (singleColumn ? 2 : 1))
-
-        ////////
-
-        function backAction() {
-            if (isDesktop) screenDesktopComponents.loadScreen()
-            else if (isMobile) screenMobileComponents.loadScreen()
-        }
 
         ////////
 

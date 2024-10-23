@@ -4,20 +4,20 @@ import QtQuick.Layouts
 import ThemeEngine
 
 Loader {
-    id: screenPlayground
+    id: screenDevice
     anchors.fill: parent
 
     function loadScreen() {
         // load screen
-        screenPlayground.active = true
+        screenDevice.active = true
 
         // change screen
         appContent.state = "Playground"
     }
 
     function backAction() {
-        if (screenPlayground.status === Loader.Ready)
-            screenPlayground.item.backAction()
+        if (screenDevice.status === Loader.Ready)
+            screenDevice.item.backAction()
     }
 
     ////////////////////////////////////////////////////////////////////////////

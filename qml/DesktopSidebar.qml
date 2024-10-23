@@ -22,12 +22,6 @@ Rectangle {
         target: null
     }
 
-    CsdMac {
-        anchors.top: parent.top
-        anchors.topMargin: 0
-        anchors.horizontalCenter: parent.horizontalCenter
-    }
-
     ////////////
 
     Column { // top menu
@@ -38,6 +32,7 @@ Rectangle {
 
         DesktopSidebarItem {
             source: "qrc:/assets/icons/material-symbols/hardware/computer.svg"
+            text: "测试窗口"
             sourceSize: 40
 
             highlightMode: "indicator"

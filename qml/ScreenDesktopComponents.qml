@@ -15,11 +15,6 @@ Loader {
         appContent.state = "DesktopComponents"
     }
 
-    function backAction() {
-        if (screenDesktopComponents.status === Loader.Ready)
-            screenDesktopComponents.item.backAction()
-    }
-
     ////////////////////////////////////////////////////////////////////////////
 
     active: false
@@ -27,15 +22,6 @@ Loader {
 
     sourceComponent: Item {
         anchors.fill: parent
-
-        ////////
-
-        function backAction() {
-            if (isDesktop) screenDesktopComponents.loadScreen()
-            else if (isMobile) screenMobileComponents.loadScreen()
-        }
-
-        ////////
 
         // MENUS ///////////////////////////////////////////////////////////////
 
@@ -1480,7 +1466,7 @@ Loader {
                         height: 128
                         hoverMode: "glow"
                         clickMode: "pull"
-                        source: "qrc:/assets/logo.png"
+                        source: "qrc:/logos/logo.png"
                         sourceSize: 96
                     }
                 }

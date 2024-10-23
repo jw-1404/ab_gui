@@ -32,10 +32,10 @@ int main(int argc, char *argv[])
 
     // GUI application /////////////////////////////////////////////////////////
     SingleApplication app(argc, argv, false); // only one instance allowed
-    app.setApplicationName("AlphaBetaCounter");
+    app.setApplicationName("Alpha/Beta 计数仪");
     app.setOrganizationName("Jianwei");
-    app.setOrganizationDomain("jw");
-    app.setWindowIcon(QIcon(":/assets/logo.png"));
+    app.setOrganizationDomain("jwkyonline.com");
+    app.setWindowIcon(QIcon(":/logos/logo_ab.png"));
     app.setApplicationDisplayName("Alpha/Beta 计数仪");
 
     // Init generic utils
