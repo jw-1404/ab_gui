@@ -11,14 +11,14 @@ T.Button {
     implicitWidth: 64
     implicitHeight: 64
 
-    width: Math.max(parent.height, content.width + 32)
+    width: Math.max(parent.height, content.width + 12)
     height: parent.height // height drive the size of this element
 
     focusPolicy: Qt.NoFocus
 
     // settings
     property url source
-    property int sourceSize: 32
+    property int sourceSize: Theme.headerHeight * 0.8
     property string highlightMode: "background" // available: background, indicator, content
 
     // colors

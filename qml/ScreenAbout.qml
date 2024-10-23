@@ -16,6 +16,11 @@ Loader {
         appContent.state = "About"
     }
 
+    function backAction() {
+        if (screenAbout.status === Loader.Ready)
+            screenAbout.item.backAction()
+    }
+
     ////////////////////////////////////////////////////////////////////////////
 
     active: false
@@ -28,10 +33,14 @@ Loader {
         contentHeight: contentColumn.height
 
         boundsBehavior: Flickable.OvershootBounds
-        ScrollBar.vertical: ScrollBar { visible: false }
+        ScrollBar.vertical: ScrollBar { visible: true }
 
         ////////
 
+        function backAction() {
+        }
+
+        ///////
         Column {
             id: contentColumn
 
@@ -72,9 +81,9 @@ Loader {
                         anchors.verticalCenterOffset: -2
 
                         Text {
-                            text: Qt.application.name
+                            text: "Test"
                             color: Theme.colorText
-                            font.pixelSize: 0
+                            font.pixelSize: Theme.fontSizeTitle
                         }
                         Text {
                             color: Theme.colorSubText
@@ -93,7 +102,7 @@ Loader {
                     spacing: Theme.componentMargin
 
                     ButtonSolid {
-                        width: isPhone ? 150 : 160
+                        width: 160
 
                         text: qsTr("WEBSITE")
                         source: "qrc:/assets/icons/material-symbols/link.svg"
@@ -102,7 +111,7 @@ Loader {
                     }
 
                     ButtonSolid {
-                        width: isPhone ? 150 : 160
+                        width: 160
 
                         text: qsTr("SUPPORT")
                         source: "qrc:/assets/icons/material-symbols/support.svg"
@@ -110,15 +119,6 @@ Loader {
                         onClicked: Qt.openUrlExternally("https://emeric.io/")
                     }
 
-                    ButtonSolid {
-                        width: isPhone ? 150 : 160
-                        visible: (appWindow.width > 800)
-
-                        text: qsTr("GitHub")
-                        source: "qrc:/assets/gfx/logos/github.svg"
-                        sourceSize: 22
-                        onClicked: Qt.openUrlExternally("https://github.com/emericg/QmlAppTemplate")
-                    }
                 }
 
                 Rectangle { // bottom separator
@@ -126,7 +126,7 @@ Loader {
                     anchors.right: parent.right
                     anchors.bottom: parent.bottom
                     height: 2
-                    visible: isDesktop
+                    visible: true
                     border.color: Theme.colorSeparator
                 }
             }
@@ -447,6 +447,7 @@ Loader {
             ////////
 
         }
+
     }
 
     ////////////////////////////////////////////////////////////////////////////

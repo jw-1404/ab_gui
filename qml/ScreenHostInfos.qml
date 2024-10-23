@@ -32,14 +32,14 @@ Loader {
         contentWidth: -1
         contentHeight: contentFlow.height
 
-        boundsBehavior: isDesktop ? Flickable.OvershootBounds : Flickable.DragAndOvershootBounds
+        boundsBehavior: Theme.isDesktop ? Flickable.OvershootBounds : Flickable.DragAndOvershootBounds
         ScrollBar.vertical: ScrollBar { visible: false }
 
         ////////
 
         function backAction() {
-            if (isDesktop) screenDesktopComponents.loadScreen()
-            else if (isMobile) screenMobileComponents.loadScreen()
+            if (Theme.isDesktop) screenDesktopComponents.loadScreen()
+            else if (Theme.isMobile) screenMobileComponents.loadScreen()
         }
 
         ////////

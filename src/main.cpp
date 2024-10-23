@@ -54,6 +54,7 @@ int main(int argc, char *argv[])
       qWarning() << "Cannot init app components!";
       return EXIT_FAILURE;
     }
+    settingMgr->setAppThemeCSD(true);
     utilsLanguage->loadLanguage(settingMgr->getAppLanguage());
 
     // ThemeEngine

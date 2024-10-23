@@ -31,14 +31,14 @@ Loader {
         contentWidth: -1
         contentHeight: contentColumn.height
 
-        boundsBehavior: isDesktop ? Flickable.OvershootBounds : Flickable.DragAndOvershootBounds
+        boundsBehavior: Theme.isDesktop ? Flickable.OvershootBounds : Flickable.DragAndOvershootBounds
         ScrollBar.vertical: ScrollBar { visible: false }
 
         ////////
 
         function backAction() {
-            if (isDesktop) screenDesktopComponents.loadScreen()
-            else if (isMobile) screenMobileComponents.loadScreen()
+            if (Theme.isDesktop) screenDesktopComponents.loadScreen()
+            else if (Theme.isMobile) screenMobileComponents.loadScreen()
         }
 
         ////////
@@ -151,97 +151,6 @@ Loader {
                 }
             }
 
-            ////////
-
-            Item { // element_appTheme
-                anchors.left: parent.left
-                anchors.right: parent.right
-                height: Theme.componentHeightXL
-
-                visible: isMobile
-
-                IconSvg {
-                    anchors.left: parent.left
-                    anchors.leftMargin: contentColumn.padIcon
-                    anchors.verticalCenter: parent.verticalCenter
-
-                    width: 24
-                    height: 24
-                    color: Theme.colorIcon
-                    source: "qrc:/assets/icons/material-icons/duotone/style.svg"
-                }
-
-                Text {
-                    anchors.left: parent.left
-                    anchors.leftMargin: contentColumn.padText
-                    anchors.verticalCenter: parent.verticalCenter
-
-                    text: qsTr("Theme")
-                    textFormat: Text.PlainText
-                    font.pixelSize: Theme.fontSizeContent
-                    color: Theme.colorText
-                    wrapMode: Text.WordWrap
-                    verticalAlignment: Text.AlignVCenter
-                }
-
-                ComboBoxThemed {
-                    //anchors.left: parent.left
-                    //anchors.leftMargin: contentColumn.padText
-                    anchors.right: parent.right
-                    anchors.rightMargin: Theme.componentMargin
-                    anchors.verticalCenter: parent.verticalCenter
-
-                    model: ListModel {
-                        id: cbAppTheme
-                        ListElement { text: "MOBILE LIGHT"; }
-                        ListElement { text: "MOBILE DARK"; }
-
-                        ListElement { text: "MATERIAL LIGHT"; }
-                        ListElement { text: "MATERIAL DARK"; }
-
-                        ListElement { text: "DESKTOP LIGHT"; }
-                        ListElement { text: "DESKTOP DARK"; }
-
-                        ListElement { text: "SNOW"; }
-                        ListElement { text: "PLANT"; }
-                        ListElement { text: "RAIN"; }
-                        ListElement { text: "DAY"; }
-                        ListElement { text: "NIGHT"; }
-
-                        ListElement { text: "LIGHT AND WARM"; }
-                        ListElement { text: "DARK AND SPOOKY"; }
-                        ListElement { text: "PLAIN AND BORING"; }
-                        ListElement { text: "BLOOD AND TEARS"; }
-                        ListElement { text: "MIGHTY KITTENS"; }
-                    }
-
-                    Component.onCompleted: {
-                        currentIndex = Theme.getThemeIndex(settingsManager.appTheme)
-                    }
-                    onActivated: {
-                        if (currentText === "MOBILE LIGHT") settingsManager.appTheme = "THEME_MOBILE_LIGHT"
-                        else if (currentText === "MOBILE DARK") settingsManager.appTheme = "THEME_MOBILE_DARK"
-
-                        else if (currentText === "MATERIAL LIGHT") settingsManager.appTheme = "THEME_MATERIAL_LIGHT"
-                        else if (currentText === "MATERIAL DARK") settingsManager.appTheme = "THEME_MATERIAL_DARK"
-
-                        else if (currentText === "DESKTOP LIGHT") settingsManager.appTheme = "THEME_DESKTOP_LIGHT"
-                        else if (currentText === "DESKTOP DARK") settingsManager.appTheme = "THEME_DESKTOP_DARK"
-
-                        else if (currentText === "SNOW") settingsManager.appTheme = "THEME_SNOW"
-                        else if (currentText === "PLANT") settingsManager.appTheme = "THEME_PLANT"
-                        else if (currentText === "RAIN") settingsManager.appTheme = "THEME_RAIN"
-                        else if (currentText === "DAY") settingsManager.appTheme = "THEME_DAY"
-                        else if (currentText === "NIGHT") settingsManager.appTheme = "THEME_NIGHT"
-
-                        else if (currentText === "LIGHT AND WARM") settingsManager.appTheme = "THEME_LIGHT_AND_WARM"
-                        else if (currentText === "DARK AND SPOOKY") settingsManager.appTheme = "THEME_DARK_AND_SPOOKY"
-                        else if (currentText === "PLAIN AND BORING") settingsManager.appTheme = "THEME_PLAIN_AND_BORING"
-                        else if (currentText === "BLOOD AND TEARS") settingsManager.appTheme = "THEME_BLOOD_AND_TEARS"
-                        else if (currentText === "MIGHTY KITTENS") settingsManager.appTheme = "THEME_MIGHTY_KITTENS"
-                    }
-                }
-            }
 
             ////////
 
@@ -313,7 +222,7 @@ Loader {
                 anchors.right: parent.right
                 height: Theme.componentHeightXL
 
-                visible: isDesktop
+                visible: Theme.isDesktop
 
                 IconSvg {
                     anchors.left: parent.left
@@ -360,7 +269,7 @@ Loader {
 
                 topPadding: -12
                 bottomPadding: 0
-                visible: isDesktop
+                visible: Theme.isDesktop
 
                 text: qsTr("qetxyjcgkcul.")
                 textFormat: Text.PlainText

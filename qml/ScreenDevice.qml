@@ -12,7 +12,7 @@ Loader {
         screenDevice.active = true
 
         // change screen
-        appContent.state = "Playground"
+        appContent.state = "Device"
     }
 
     function backAction() {
@@ -32,8 +32,6 @@ Loader {
         ////////
 
         function backAction() {
-            if (isDesktop) screenDesktopComponents.loadScreen()
-            else if (isMobile) screenMobileComponents.loadScreen()
         }
         ////////
     }

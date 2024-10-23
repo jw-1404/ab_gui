@@ -10,7 +10,7 @@ Rectangle {
     anchors.bottom: parent.bottom
 
     z: 10
-    width: isHdpi ? 72 : 80
+    width: Theme.sidebarWidth
     color: Theme.colorSidebar
 
     ////////////
@@ -36,43 +36,17 @@ Rectangle {
             sourceSize: 40
 
             highlightMode: "indicator"
-            highlighted: (appContent.state === "DesktopComponents")
-            onClicked: screenDesktopComponents.loadScreen()
+            highlighted: (appContent.state === "MainView")
+            onClicked: screenMainView.loadScreen()
         }
         DesktopSidebarItem {
-            source: "qrc:/assets/icons/material-symbols/hardware/smartphone-fill.svg"
-            sourceSize: 40
-            highlightMode: "indicator"
-
-            highlighted: (appContent.state === "MobileComponents")
-            onClicked: screenMobileComponents.loadScreen()
-        }
-        DesktopSidebarItem {
-            source: "qrc:/assets/icons/material-icons/duotone/touch_app.svg"
+            source: "qrc:/assets/icons/material-symbols/hardware/computer.svg"
+            text: "硬件配置"
             sourceSize: 40
 
             highlightMode: "indicator"
-            highlighted: (appContent.state === "Playground")
-
-            onClicked: screenPlayground.loadScreen()
-        }
-        DesktopSidebarItem {
-            source: "qrc:/assets/icons/material-icons/duotone/memory.svg"
-            sourceSize: 40
-
-            highlightMode: "indicator"
-            highlighted: (appContent.state === "HostInfos")
-
-            onClicked: screenHostInfos.loadScreen()
-        }
-        DesktopSidebarItem {
-            source: "qrc:/assets/icons/material-icons/duotone/format_size.svg"
-            sourceSize: 40
-
-            highlightMode: "indicator"
-            highlighted: (appContent.state === "FontInfos")
-
-            onClicked: screenFontInfos.loadScreen()
+            highlighted: (appContent.state === "Device")
+            onClicked: screenDevice.loadScreen()
         }
     }
 

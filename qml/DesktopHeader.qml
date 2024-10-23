@@ -8,13 +8,13 @@ Rectangle {
     anchors.left: parent.left
     anchors.right: parent.right
 
-    height: headerHeight
+    height: Theme.headerHeight
     color: Theme.colorHeader
     clip: false
     z: 10
 
     property string headerTitle: Qt.application.name
-    property int headerHeight: 64
+    property int headerHeight: Theme.headerHeight
     property int headerPosition: 64
 
     property bool componentsEnabled: true
@@ -23,14 +23,11 @@ Rectangle {
     ////////////////////////////////////////////////////////////////////////////
 
     signal backButtonClicked()
-    signal rightMenuClicked() // mobile header compatibility
+    signal fwdButtonClicked()
+    signal rightMenuClicked()
 
-    signal menuComponentsClicked()
     signal menuSettingsClicked()
     signal menuAboutClicked()
-    signal menuDeviceClicked()
-    signal menuHostInfosClicked()
-    signal menuMainViewClicked()
 
     ////////////////////////////////////////////////////////////////////////////
 
@@ -44,128 +41,128 @@ Rectangle {
     Image {
         id: logoImage
         anchors.left: parent.left
-        anchors.leftMargin: 6
-        width: appHeader.headerHeight
-        height: appHeader.headerHeight
+        width: Theme.sidebarWidth
+        height: headerHeight
+        scale: 0.9
         fillMode: Image.PreserveAspectFit
         source: "qrc:/logos/logo.png"
     }
 
-        // Text { // title
-        //     id: menuTitle
 
-        //     anchors.left: parent.left
-        //     anchors.verticalCenter: parent.verticalCenter
-
-        //     visible: wideMode
-        //     text: appHeader.headerTitle
-        //     font.bold: true
-        //     font.pixelSize: Theme.fontSizeHeader
-        //     color: Theme.colorHeaderContent
-        // }
-    ////////////////////////////////////////////////////////////////////////////
-
-    Row { // menus
+    Row { // navigation arrows
+        id: navigationButtons
+        anchors.verticalCenter: parent.verticalCenter
         anchors.left: logoImage.right
         anchors.top: parent.top
-        anchors.bottom: parent.bottom
 
-        spacing: 12
+        spacing: 6
         visible: true
 
-        ////////////
+        Rectangle { // separator
+            anchors.verticalCenter: parent.verticalCenter
+            height: parent.height - 10
+            width: Theme.componentBorderWidth
+            color: Theme.colorHeaderHighlight
+        }
 
-        Row {
-            id: menuMain
-            anchors.left: menuTitle.right
-            anchors.leftMargin: 12
+        RoundButtonSunken { // buttonBack
+            width: parent.height
+            height: parent.height
 
-            DesktopHeaderItem {
-                id: menuMainView
-                height: appHeader.height
+            enabled: (source !== "qrc:/assets/icons/material-symbols/arrow_back.svg" || wideMode)
+            visible: enabled
 
-                colorContent: Theme.colorHeaderContent
-                colorHighlight: Theme.colorHeaderHighlight
-                highlightMode: "background"
+            colorBackground: Theme.colorHeader
+            colorHighlight: Theme.colorHeaderHighlight
+            colorIcon: Theme.colorHeaderContent
 
-                highlighted: (appContent.state === "MainView")
-                text: "设备状态"
-                onClicked: menuMainViewClicked()
-            }
+            source: "qrc:/assets/icons/material-symbols/arrow_back.svg"
+            onClicked: backButtonClicked()
+        }
 
-            DesktopHeaderItem {
-                id: menuHostInfos
-                height: appHeader.height
+        RoundButtonSunken { // buttonFwd
+            width: parent.height
+            height: parent.height
+            rotation: 180
 
-                colorContent: Theme.colorHeaderContent
-                colorHighlight: Theme.colorHeaderHighlight
-                highlightMode: "background"
+            enabled: (source !== "qrc:/assets/icons/material-symbols/arrow_back.svg" || wideMode)
+            visible: enabled
 
-                highlighted: (appContent.state === "HostInfos")
-                text: "刻度定义"
-                onClicked: menuHostInfosClicked()
-            }
+            colorBackground: Theme.colorHeader
+            colorHighlight: Theme.colorHeaderHighlight
+            colorIcon: Theme.colorHeaderContent
 
-            DesktopHeaderItem {
-                id: menuDevice
-                height: appHeader.height
+            source: "qrc:/assets/icons/material-symbols/arrow_back.svg"
+            onClicked: fwdButtonClicked()
+        }
 
-                colorContent: Theme.colorHeaderContent
-                colorHighlight: Theme.colorHeaderHighlight
-                highlightMode: "background"
-
-                highlighted: (appContent.state === "Device")
-                source: "qrc:/assets/icons/material-icons/duotone/info.svg"
-                onClicked: menuDeviceClicked()
-            }
+        Rectangle { // separator
+            anchors.verticalCenter: parent.verticalCenter
+            height: parent.height - 10
+            width: Theme.componentBorderWidth
+            color: Theme.colorHeaderHighlight
         }
     }
 
-    Row { // menus
-        anchors.top: parent.top
+    Text {
+        id: stateTitle
+        anchors.left: navigationButtons.right
+        anchors.leftMargin: 12
+        anchors.verticalCenter: parent.verticalCenter
+        text: qsTr(appContent.state)
+        color: Theme.colorHeaderContent
+        font.bold: true
+        font.pixelSize: Theme.fontSizeHeader - 10
+    }
+    ////////////////////////////////////////////////////////////////////////////
+
+    Row { // auxiliary Menu
         anchors.right: parent.right
+        anchors.rightMargin: 2
+        anchors.top: parent.top
         anchors.bottom: parent.bottom
 
-        spacing: 12
         visible: true
+        spacing: 6
 
         ////////////
+        DesktopHeaderItem {
+            id: menuSettings
 
-        Row {
-            id: menuAuxiliary
+            colorContent: Theme.colorHeaderContent
+            colorHighlight: Theme.colorHeaderHighlight
+            highlightMode: "background"
 
-            DesktopHeaderItem {
-                id: menuSettings
-                height: appHeader.height
-
-                colorContent: Theme.colorHeaderContent
-                colorHighlight: Theme.colorHeaderHighlight
-                highlightMode: "background"
-
-                highlighted: (appContent.state === "Settings")
-                source: "qrc:/assets/icons/material-icons/duotone/tune.svg"
-                onClicked: menuSettingsClicked()
-            }
-
-            DesktopHeaderItem {
-                id: menuAbout
-                height: appHeader.height
-
-                colorContent: Theme.colorHeaderContent
-                colorHighlight: Theme.colorHeaderHighlight
-                highlightMode: "background"
-
-                highlighted: (appContent.state === "About")
-                source: "qrc:/assets/icons/material-icons/duotone/info.svg"
-                onClicked: menuAboutClicked()
-            }
+            highlighted: (appContent.state === "Settings")
+            source: "qrc:/assets/icons/material-icons/duotone/tune.svg"
+            onClicked: menuSettingsClicked()
         }
+        DesktopHeaderItem {
+            id: menuAbout
+            height: parent.height
+
+            colorContent: Theme.colorHeaderContent
+            colorHighlight: Theme.colorHeaderHighlight
+            highlightMode: "background"
+
+            highlighted: (appContent.state === "About")
+            source: "qrc:/assets/icons/material-icons/duotone/info.svg"
+            onClicked: menuAboutClicked()
+        }
+
+        Rectangle { // separator
+            anchors.verticalCenter: parent.verticalCenter
+            height: parent.height
+            width: 12
+            color: Theme.colorHeader
+        }
+
+        CsdWindows { }
+
+        CsdLinux { }
+
     }
 
     ////////////
-
-    // CsdWindows { }
-
-    // CsdLinux { }
 
 }

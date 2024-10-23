@@ -6,12 +6,13 @@ import ThemeEngine
 
 Loader {
     anchors.top: parent.top
+    anchors.bottom: parent.bottom
     anchors.topMargin: 0
-    anchors.right: parent.right
-    anchors.rightMargin: 0
+    // anchors.right: parent.right
+    // anchors.rightMargin: 0
 
-    width: active ? 138 : 0
-    height: active ? 28 : 0
+    width: active ? Theme.headerHeight * 3 : 0
+    height: active ? Theme.headerHeight : 0
 
     active: (settingsManager.appThemeCSD && Qt.platform.os === "windows")
     asynchronous: true
@@ -23,11 +24,11 @@ Loader {
         ////////
 
         Rectangle { // button minimize
-            width: 46; height: 28;
+            width: Theme.headerHeight; height: Theme.headerHeight;
             color: mouseAreaMin.containsMouse ? "#33aaaaaa" : "transparent"
 
             Rectangle {
-                width: 10; height: 1;
+                width: parent.width*0.4; height: 2;
                 anchors.centerIn: parent
                 color: mouseAreaMin.containsMouse ? Theme.colorHighContrast : Theme.colorIcon
             }
@@ -44,14 +45,15 @@ Loader {
         ////////
 
         Rectangle { // button maximize
-            width: 46; height: 28;
+            // width: 46; height: 28;
+            width: Theme.headerHeight; height: Theme.headerHeight;
             color: mouseAreaMax.containsMouse ? "#33aaaaaa" : "transparent"
 
             Rectangle {
-                width: 10; height: 10;
+                width: parent.width*0.4; height: parent.height*0.4;
                 anchors.centerIn: parent
                 color: "transparent"
-                border.width: 1
+                border.width: 2
                 border.color: mouseAreaMax.containsMouse ? Theme.colorHighContrast : Theme.colorIcon
             }
 
@@ -72,30 +74,31 @@ Loader {
         ////////
 
         Rectangle { // button close
-            width: 46; height: 28;
+            // width: 46; height: 28;
+            width: Theme.headerHeight; height: Theme.headerHeight;
             color: mouseAreaClose.containsMouse ? "red" : "transparent"
 
-            IconSvg {
-                width: 16; height: 16;
-                anchors.centerIn: parent
+            // IconSvg {
+            //     width: parent.width*0.7; height: parent.width*0.7;
+            //     anchors.centerIn: parent
 
-                source: "qrc:/assets/icons/material-symbols/close.svg"
-                color: mouseAreaClose.containsMouse ? "white" : Theme.colorIcon
-            }
-/*
+            //     source: "qrc:/assets/icons/material-symbols/close.svg"
+            //     color: mouseAreaClose.containsMouse ? "white" : Theme.colorIcon
+            // }
+
             Rectangle {
-                width: 12; height: 1;
+                width: parent.width*0.5; height: 2;
                 anchors.centerIn: parent
                 rotation: 45
                 color: mouseAreaClose.containsMouse ? "white" : Theme.colorIcon
             }
             Rectangle {
-                width: 12; height: 1;
+                width: parent.width*0.5; height: 2;
                 anchors.centerIn: parent
                 rotation: -45
                 color: mouseAreaClose.containsMouse ? "white" : Theme.colorIcon
             }
-*/
+
             MouseArea {
                 id: mouseAreaClose
                 anchors.fill: parent

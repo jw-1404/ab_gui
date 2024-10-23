@@ -3,13 +3,15 @@ import QtQuick.Controls
 
 import ThemeEngine
 
-Item {
+Loader {
     id: screenMainView
     anchors.fill: parent
 
     function loadScreen() {
-        if (isDesktop) screenDesktopComponents.loadScreen()
-        else if (isMobile) screenMobileComponents.loadScreen()
-        else appContent.state = "MainView"
+        // load screen
+        screenMainView.active = true
+
+        // change screen
+        appContent.state = "MainView"
     }
 }
