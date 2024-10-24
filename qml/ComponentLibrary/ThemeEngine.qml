@@ -45,7 +45,7 @@ Item {
 
     ////////////////
     property int sidebarWidth: isHdpi ? 60: 60
-    property int headerHeight: 32
+    property int headerHeight: 40
     property int footerHeight: 32
     ////////////////
 
