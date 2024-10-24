@@ -128,6 +128,7 @@
         <file alias="SwipeArea.qml">utils/SwipeArea.qml</file>
         <file alias="WindowGeometrySaver.qml">utils/WindowGeometrySaver.qml</file>
         <file>controls/FramelessResize.qml</file>
+        <file alias="CsdMenu.qml">utils/CsdMenu.qml</file>
     </qresource>
     <qresource prefix="/utils">
         <file alias="UtilsMedia.js">utils/UtilsMedia.js</file>

@@ -44,7 +44,7 @@ Item {
     property bool isTablet: ((Qt.platform.os === "ios" || Qt.platform.os === "android") && (utilsScreen.screenSize >= 7.0))
 
     ////////////////
-    property int sidebarWidth: isHdpi ? 48 : 56
+    property int sidebarWidth: isHdpi ? 60: 60
     property int headerHeight: 32
     property int footerHeight: 32
     ////////////////

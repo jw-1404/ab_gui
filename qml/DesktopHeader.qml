@@ -157,9 +157,7 @@ Rectangle {
             color: Theme.colorHeader
         }
 
-        CsdWindows { }
-
-        CsdLinux { }
+        CsdMenu { }
 
     }
 

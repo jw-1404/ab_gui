@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
     qputenv("QT_QUICK_FLICKABLE_WHEEL_DECELERATION", "2500");
 
     // GUI application /////////////////////////////////////////////////////////
-    SingleApplication app(argc, argv, false); // only one instance allowed
+    SingleApplication app(argc, argv, true); // [todo] one instance may have problem during qt creator dev
     app.setApplicationName("Alpha/Beta 计数仪");
     app.setOrganizationName("Jianwei");
     app.setOrganizationDomain("jwkyonline.com");
