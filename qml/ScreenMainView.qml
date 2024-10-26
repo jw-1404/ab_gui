@@ -14,4 +14,11 @@ Loader {
         // change screen
         appContent.state = "MainView"
     }
+
+    active: false
+    asynchronous: false
+
+    sourceComponent: Item {
+    }
+
 }

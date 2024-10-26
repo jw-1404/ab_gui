@@ -4,7 +4,8 @@
 #include <utils_screen.h>
 #include <utils_sysinfo.h>
 #include <utils_language.h>
-#include <SingleApplication>
+// #include <SingleApplication>
+#include <QtGui/QGuiApplication>
 
 #include <QtGlobal>
 #include <QLibraryInfo>
@@ -31,7 +32,9 @@ int main(int argc, char *argv[])
     qputenv("QT_QUICK_FLICKABLE_WHEEL_DECELERATION", "2500");
 
     // GUI application /////////////////////////////////////////////////////////
-    SingleApplication app(argc, argv, true); // [todo] one instance may have problem during qt creator dev
+    // SingleApplication app(argc, argv, true); // [todo] one instance may have problem during qt creator dev
+    QGuiApplication app(argc, argv);
+
     app.setApplicationName("Alpha/Beta 计数仪");
     app.setOrganizationName("Jianwei");
     app.setOrganizationDomain("jwkyonline.com");
@@ -54,7 +57,7 @@ int main(int argc, char *argv[])
       qWarning() << "Cannot init app components!";
       return EXIT_FAILURE;
     }
-    settingMgr->setAppThemeCSD(true);
+    settingMgr->setAppThemeCSD(false);
     utilsLanguage->loadLanguage(settingMgr->getAppLanguage());
 
     // ThemeEngine
@@ -86,8 +89,8 @@ int main(int argc, char *argv[])
     if (!window) return EXIT_FAILURE;
 
     // React to secondary instances
-    QObject::connect(&app, &SingleApplication::instanceStarted, window, &QQuickWindow::show);
-    QObject::connect(&app, &SingleApplication::instanceStarted, window, &QQuickWindow::raise);
+    // QObject::connect(&app, &SingleApplication::instanceStarted, window, &QQuickWindow::show);
+    // QObject::connect(&app, &SingleApplication::instanceStarted, window, &QQuickWindow::raise);
 
     return app.exec();
 }

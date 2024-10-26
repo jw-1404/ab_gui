@@ -9,16 +9,15 @@ ApplicationWindow {
     flags: settingsManager.appThemeCSD ? Qt.Window | Qt.FramelessWindowHint : Qt.Window
     // flags: settingsManager.appThemeCSD ? Qt.Window | Qt.CustomizeWindowHint : Qt.Window
 
-    color: Theme.colorBackground
-    // color: settingsManager.appThemeCSD ? "transparent" : Theme.colorBackground
-    // background: Image {
-    //     id: contentBkg
-    //     scale: 0.7
-    //     opacity: 0.08
-    //     fillMode: Image.PreserveAspectFit
-    //     source: "qrc:/logos/background.png"
-
-    // }
+    // color: Theme.colorBackground
+    color: settingsManager.appThemeCSD ? "transparent" : Theme.colorBackground
+    background: Image {
+        id: contentBkg
+        scale: 0.7
+        opacity: 0.08
+        fillMode: Image.PreserveAspectFit
+        source: "qrc:/logos/background.png"
+    }
 
     minimumWidth: 800
     minimumHeight: 560
@@ -124,15 +123,21 @@ ApplicationWindow {
     Connections {
         target: appHeader
 
-        function onBackButtonClicked() {
-            backAction()
-        }
-        function onRightMenuClicked() {
-            //
-        }
+        // function onBackButtonClicked() {
+        //     backAction()
+        // }
+        // function onRightMenuClicked() {
+        //     //
+        // }
 
-        function onMenuSettingsClicked() { screenSettings.loadScreen() }
-        function onMenuAboutClicked() { screenAbout.loadScreen() }
+        function onMenuSettingsClicked() {
+            screenSettings.loadScreen()
+            console.log("menuSetting clicked")
+        }
+        function onMenuAboutClicked() {
+            screenAbout.loadScreen()
+            console.log("menuAbout clicked")
+        }
     }
 
     Connections {
@@ -151,7 +156,7 @@ ApplicationWindow {
     }
 
     onActiveFocusItemChanged: {
-        //console.log("activeFocusItem:" + activeFocusItem)
+        console.log("activeFocusItem:" + activeFocusItem)
     }
 
     // User generated events handling //////////////////////////////////////////
@@ -160,33 +165,32 @@ ApplicationWindow {
     }
 
     function forwardAction() {
-        //
     }
 
-    MouseArea {
-        anchors.fill: parent
-        acceptedButtons: Qt.BackButton | Qt.ForwardButton
-        onClicked: (mouse) => {
-            if (mouse.button === Qt.BackButton) {
-                backAction()
-            } else if (mouse.button === Qt.ForwardButton) {
-                forwardAction()
-            }
-        }
-    }
+    // MouseArea {
+    //     anchors.fill: parent
+    //     acceptedButtons: Qt.BackButton | Qt.ForwardButton
+    //     onClicked: (mouse) => {
+    //         if (mouse.button === Qt.BackButton) {
+    //             backAction()
+    //         } else if (mouse.button === Qt.ForwardButton) {
+    //             forwardAction()
+    //         }
+    //     }
+    // }
 
-    Shortcut {
-        sequence: StandardKey.Preferences
-        onActivated: screenSettings.loadScreen()
-    }
-    Shortcut {
-        sequences: [StandardKey.Close]
-        onActivated: appWindow.close()
-    }
-    Shortcut {
-        sequence: StandardKey.Quit
-        onActivated: appWindow.exit(0)
-    }
+    // Shortcut {
+    //     sequence: StandardKey.Preferences
+    //     onActivated: screenSettings.loadScreen()
+    // }
+    // Shortcut {
+    //     sequences: [StandardKey.Close]
+    //     onActivated: appWindow.close()
+    // }
+    // Shortcut {
+    //     sequence: StandardKey.Quit
+    //     onActivated: appWindow.exit(0)
+    // }
 
     // QML /////////////////////////////////////////////////////////////////////
     DesktopHeader {
@@ -209,12 +213,12 @@ ApplicationWindow {
     Rectangle {
         id: appContent
 
-        anchors.top: parent.bottom
+        anchors.top: appHeader.bottom
         anchors.left: appSidebar.right
         anchors.right: parent.right
         anchors.bottom: parent.bottom
 
-        color: Theme.colorBackground
+        color: state !== "MainView" ? Theme.colorBackground : "transparent"
 
         ScreenMainView {
             id: screenMainView
@@ -228,9 +232,12 @@ ApplicationWindow {
         ScreenAbout {
             id: screenAbout
         }
+        ScreenDemo {
+            id: screenDemo
+        }
 
         Component.onCompleted: {
-            screenSettings.loadScreen()
+            screenMainView.loadScreen()
         }
 
         onStateChanged: {
@@ -238,7 +245,7 @@ ApplicationWindow {
         }
 
         // Initial state
-        state: "Settings"
+        state: "MainView"
 
         states: [
             State {
@@ -247,6 +254,7 @@ ApplicationWindow {
                 PropertyChanges { target: screenDevice; visible: false; enabled: false; }
                 PropertyChanges { target: screenSettings; visible: false; enabled: false; }
                 PropertyChanges { target: screenAbout; visible: false; enabled: false; }
+                PropertyChanges { target: screenDemo; visible: false; enabled: false; }
             },
             State {
                 name: "Device"
@@ -254,6 +262,7 @@ ApplicationWindow {
                 PropertyChanges { target: screenDevice; visible: true; enabled: true; focus: true; }
                 PropertyChanges { target: screenSettings; visible: false; enabled: false; }
                 PropertyChanges { target: screenAbout; visible: false; enabled: false; }
+                PropertyChanges { target: screenDemo; visible: false; enabled: false; }
             },
             State {
                 name: "Settings"
@@ -261,6 +270,7 @@ ApplicationWindow {
                 PropertyChanges { target: screenDevice; visible: false; enabled: false; }
                 PropertyChanges { target: screenSettings; visible: true; enabled: true; focus: true; }
                 PropertyChanges { target: screenAbout; visible: false; enabled: false; }
+                PropertyChanges { target: screenDemo; visible: false; enabled: false; }
             },
             State {
                 name: "About"
@@ -268,6 +278,15 @@ ApplicationWindow {
                 PropertyChanges { target: screenDevice; visible: false; enabled: false; }
                 PropertyChanges { target: screenSettings; visible: false; enabled: false; }
                 PropertyChanges { target: screenAbout; visible: true; enabled: true; focus: true; }
+                PropertyChanges { target: screenDemo; visible: false; enabled: false; }
+            },
+            State {
+                name: "Demo"
+                PropertyChanges { target: screenMainView; visible: false; enabled: false; }
+                PropertyChanges { target: screenDevice; visible: false; enabled: false; }
+                PropertyChanges { target: screenSettings; visible: false; enabled: false; }
+                PropertyChanges { target: screenAbout; visible: false; enabled: false; focus: false; }
+                PropertyChanges { target: screenDemo; visible: true; enabled: true; }
             }
         ]
     }

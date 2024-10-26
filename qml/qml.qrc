@@ -31,5 +31,6 @@
         <file alias="PopupTime.qml">popups/PopupTime.qml</file>
         <file>main.qml</file>
         <file>ScreenDevice.qml</file>
+        <file>ScreenDemo.qml</file>
     </qresource>
 </RCC>

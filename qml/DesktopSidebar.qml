@@ -32,7 +32,7 @@ Rectangle {
 
         DesktopSidebarItem {
             source: "qrc:/assets/icons/material-symbols/hardware/computer.svg"
-            text: "测试窗口"
+            text: "主窗口"
             sourceSize: 40
 
             highlightMode: "indicator"
@@ -41,12 +41,48 @@ Rectangle {
         }
         DesktopSidebarItem {
             source: "qrc:/assets/icons/material-symbols/hardware/computer.svg"
-            text: "硬件配置"
+            text: "数据采集"
             sourceSize: 40
 
             highlightMode: "indicator"
             highlighted: (appContent.state === "Device")
             onClicked: screenDevice.loadScreen()
+        }
+        DesktopSidebarItem {
+            source: "qrc:/assets/icons/material-symbols/hardware/computer.svg"
+            text: "系统配置"
+            sourceSize: 40
+
+            highlightMode: "indicator"
+            highlighted: (appContent.state === "Device")
+            onClicked: screenDevice.loadScreen()
+        }
+        DesktopSidebarItem {
+            source: "qrc:/assets/icons/material-symbols/duotone/insert_chart.svg"
+            text: "刻度定义"
+            sourceSize: 40
+
+            // highlightMode: "indicator"
+            // highlighted: (appContent.state === "Device")
+            // onClicked: screenDevice.loadScreen()
+        }
+        DesktopSidebarItem {
+            source: "qrc:/assets/icons/material-symbols/duotone/chart_data.svg"
+            text: "质控图"
+            sourceSize: 40
+
+            // highlightMode: "indicator"
+            // highlighted: (appContent.state === "Device")
+            // onClicked: screenDevice.loadScreen()
+        }
+        DesktopSidebarItem {
+            source: "qrc:/assets/icons/bootstrap/database.svg"
+            text: "数据库"
+            sourceSize: 40
+
+            // highlightMode: "indicator"
+            // highlighted: (appContent.state === "Device")
+            // onClicked: screenDevice.loadScreen()
         }
     }
 
@@ -87,7 +123,7 @@ Rectangle {
     }
 
     ////////////
-/*
+
     Rectangle { // shadow
         anchors.top: parent.top
         anchors.right: parent.left
@@ -102,6 +138,6 @@ Rectangle {
             GradientStop { position: 1.0; color: Theme.colorBackground; }
         }
     }
-*/
+
     ////////////
 }
