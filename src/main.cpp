@@ -35,7 +35,7 @@ int main(int argc, char *argv[])
     // SingleApplication app(argc, argv, true); // [todo] one instance may have problem during qt creator dev
     QGuiApplication app(argc, argv);
 
-    app.setApplicationName("Alpha/Beta 计数仪");
+    app.setApplicationName("AlphaBetaCounter");
     app.setOrganizationName("Jianwei");
     app.setOrganizationDomain("jwkyonline.com");
     app.setWindowIcon(QIcon(":/logos/logo_ab.png"));
