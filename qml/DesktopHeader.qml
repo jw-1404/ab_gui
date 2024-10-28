@@ -150,12 +150,12 @@ Rectangle {
             onClicked: menuAboutClicked()
         }
 
-        Rectangle { // separator
-            anchors.verticalCenter: parent.verticalCenter
-            height: parent.height
-            width: 12
-            color: Theme.colorHeader
-        }
+        // Rectangle { // separator
+        //     anchors.verticalCenter: parent.verticalCenter
+        //     height: parent.height
+        //     width: 12
+        //     color: Theme.colorHeader
+        // }
 
         CsdMenu { }
 

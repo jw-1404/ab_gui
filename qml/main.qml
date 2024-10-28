@@ -9,8 +9,8 @@ ApplicationWindow {
     flags: settingsManager.appThemeCSD ? Qt.Window | Qt.FramelessWindowHint : Qt.Window
     // flags: settingsManager.appThemeCSD ? Qt.Window | Qt.CustomizeWindowHint : Qt.Window
 
-    // color: Theme.colorBackground
-    color: settingsManager.appThemeCSD ? "transparent" : Theme.colorBackground
+    color: Theme.colorBackground
+    // color: settingsManager.appThemeCSD ? "transparent" : Theme.colorBackground
     background: Image {
         id: contentBkg
         scale: 0.7

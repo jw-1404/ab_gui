@@ -9,7 +9,7 @@ Loader {
     anchors.bottom: parent.bottom
     anchors.topMargin: 0
 
-    width: active ? Theme.headerHeight * 3 : 0
+    width: active ? Theme.headerHeight * 3 + 12 : 0
     height: active ? Theme.headerHeight : 0
 
     active: (settingsManager.appThemeCSD)
@@ -19,6 +19,12 @@ Loader {
         id: csdMenu
         spacing: 0
 
+        Rectangle { // separator
+            anchors.verticalCenter: parent.verticalCenter
+            height: parent.height
+            width: 12
+            color: Theme.colorHeader
+        }
         ////////
 
         Rectangle { // button minimize

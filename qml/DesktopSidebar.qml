@@ -26,7 +26,7 @@ Rectangle {
 
     Column { // top menu
         anchors.top: parent.top
-        anchors.topMargin: 32
+        anchors.topMargin: 6
         anchors.left: parent.left
         anchors.right: parent.right
 
@@ -92,10 +92,10 @@ Rectangle {
         anchors.left: parent.left
         anchors.right: parent.right
         anchors.bottom: parent.bottom
-        anchors.bottomMargin: 12
+        // anchors.bottomMargin: 12
 
         DesktopSidebarItem {
-            source: "qrc:/assets/icons/material-icons/duotone/info.svg"
+            source: "qrc:/assets/icons/material-symbols/bug_report.svg"
             sourceSize: 40
 
             highlightMode: "indicator"
@@ -114,20 +114,20 @@ Rectangle {
 
     ////////////
 
-    Rectangle { // shadow
-        anchors.top: parent.top
-        anchors.right: parent.left
-        anchors.bottom: parent.bottom
+    // Rectangle { // shadow
+    //     anchors.top: parent.top
+    //     anchors.right: parent.left
+    //     anchors.bottom: parent.bottom
 
-        width: 8
-        opacity: 0.66
+    //     width: 6
+    //     opacity: 1
 
-        gradient: Gradient {
-            orientation: Gradient.Horizontal
-            GradientStop { position: 0.0; color: Theme.colorSidebarHighlight; }
-            GradientStop { position: 1.0; color: Theme.colorBackground; }
-        }
-    }
+    //     gradient: Gradient {
+    //         orientation: Gradient.Horizontal
+    //         GradientStop { position: 0.0; color: Theme.colorSidebarHighlight; }
+    //         GradientStop { position: 1.0; color: Theme.colorBackground; }
+    //     }
+    // }
 
     ////////////
 }

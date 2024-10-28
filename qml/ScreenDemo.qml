@@ -289,17 +289,8 @@ Loader {
                             ListElement { text: "DESKTOP LIGHT"; }
                             ListElement { text: "DESKTOP DARK"; }
 
-                            ListElement { text: "SNOW"; }
-                            ListElement { text: "PLANT"; }
-                            ListElement { text: "RAIN"; }
-                            ListElement { text: "DAY"; }
-                            ListElement { text: "NIGHT"; }
-
-                            ListElement { text: "LIGHT AND WARM"; }
-                            ListElement { text: "DARK AND SPOOKY"; }
-                            ListElement { text: "PLAIN AND BORING"; }
-                            ListElement { text: "BLOOD AND TEARS"; }
-                            ListElement { text: "MIGHTY KITTENS"; }
+                            ListElement { text: "JianWei LIGHT"; }
+                            ListElement { text: "JianWei DARK"; }
                         }
 
                         Component.onCompleted: {
@@ -315,17 +306,9 @@ Loader {
                             else if (currentText === "DESKTOP LIGHT") settingsManager.appTheme = "THEME_DESKTOP_LIGHT"
                             else if (currentText === "DESKTOP DARK") settingsManager.appTheme = "THEME_DESKTOP_DARK"
 
-                            else if (currentText === "SNOW") settingsManager.appTheme = "THEME_SNOW"
-                            else if (currentText === "PLANT") settingsManager.appTheme = "THEME_PLANT"
-                            else if (currentText === "RAIN") settingsManager.appTheme = "THEME_RAIN"
-                            else if (currentText === "DAY") settingsManager.appTheme = "THEME_DAY"
-                            else if (currentText === "NIGHT") settingsManager.appTheme = "THEME_NIGHT"
+                            else if (currentText === "JianWei LIGHT") settingsManager.appTheme = "THEME_JW_LIGHT"
+                            else if (currentText === "JianWei DARK") settingsManager.appTheme = "THEME_JW_DARK"
 
-                            else if (currentText === "LIGHT AND WARM") settingsManager.appTheme = "THEME_LIGHT_AND_WARM"
-                            else if (currentText === "DARK AND SPOOKY") settingsManager.appTheme = "THEME_DARK_AND_SPOOKY"
-                            else if (currentText === "PLAIN AND BORING") settingsManager.appTheme = "THEME_PLAIN_AND_BORING"
-                            else if (currentText === "BLOOD AND TEARS") settingsManager.appTheme = "THEME_BLOOD_AND_TEARS"
-                            else if (currentText === "MIGHTY KITTENS") settingsManager.appTheme = "THEME_MIGHTY_KITTENS"
                         }
                     }
 
@@ -1227,7 +1210,7 @@ Loader {
                     TagButtonFlat {
                         anchors.verticalCenter: parent.verticalCenter
                         text: "TAG"
-                        //color: Theme.colorForeground
+                        color: Theme.colorForeground
                     }
 
                     TagButtonFlat {
@@ -1239,7 +1222,7 @@ Loader {
                     TagButtonClear {
                         anchors.verticalCenter: parent.verticalCenter
                         text: "TAG"
-                        //color: Theme.colorForeground
+                        color: Theme.colorForeground
                     }
 
                     TagButtonClear {
@@ -1276,17 +1259,7 @@ Loader {
 
                     TagClear {
                         text: "tag"
-                        color: Theme.colorMaterialBlue
-                    }
-
-                    TagClear {
-                        text: "tag"
                         color: Theme.colorMaterialRed
-                    }
-
-                    TagClear {
-                        text: "tag"
-                        color: Theme.colorMaterialDeepPurple
                     }
 
                     TagClear {
@@ -1307,17 +1280,7 @@ Loader {
 
                     TagFlat {
                         text: "tag"
-                        color: Theme.colorMaterialBlue
-                    }
-
-                    TagFlat {
-                        text: "tag"
                         color: Theme.colorMaterialRed
-                    }
-
-                    TagFlat {
-                        text: "tag"
-                        color: Theme.colorMaterialDeepPurple
                     }
 
                     TagFlat {
@@ -1448,13 +1411,13 @@ Loader {
                     ProgressArc {
                         anchors.verticalCenter: parent.verticalCenter
                         width: 112
-                        value: 0.33
+                        value: 0.9
                     }
 
                     ProgressCircle {
                         anchors.verticalCenter: parent.verticalCenter
                         width: 112
-                        value: 0.33
+                        value: 0.9
                     }
 
                     ButtonImage {

@@ -57,8 +57,8 @@ int main(int argc, char *argv[])
       qWarning() << "Cannot init app components!";
       return EXIT_FAILURE;
     }
-    settingMgr->setAppThemeCSD(false);
-    settingMgr->setAppTheme("THEME_JW_DARK");
+    settingMgr->setAppThemeCSD(true);
+    settingMgr->setAppTheme("THEME_JW_LIGHT");
     utilsLanguage->loadLanguage(settingMgr->getAppLanguage());
 
     // ThemeEngine
