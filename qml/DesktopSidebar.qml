@@ -31,8 +31,7 @@ Rectangle {
         anchors.right: parent.right
 
         DesktopSidebarItem {
-            source: "qrc:/assets/icons/material-symbols/hardware/computer.svg"
-            text: "主窗口"
+            source: "qrc:/assets/icons/material-symbols/home.svg"
             sourceSize: 40
 
             highlightMode: "indicator"
@@ -40,17 +39,18 @@ Rectangle {
             onClicked: screenMainView.loadScreen()
         }
         DesktopSidebarItem {
-            source: "qrc:/assets/icons/material-symbols/hardware/computer.svg"
-            text: "数据采集"
+            // source: "qrc:/assets/icons/material-symbols/hardware/computer.svg"
+            source: "qrc:/assets/icons/material-symbols/memory.svg"
+            // text: "数据采集"
             sourceSize: 40
 
             highlightMode: "indicator"
-            highlighted: (appContent.state === "Device")
-            onClicked: screenDevice.loadScreen()
+            highlighted: (appContent.state === "Acquisition")
+            onClicked: screenDaq.loadScreen()
         }
         DesktopSidebarItem {
-            source: "qrc:/assets/icons/material-symbols/hardware/computer.svg"
-            text: "系统配置"
+            source: "qrc:/assets/icons/material-symbols/settings.svg"
+            // text: "设备配置"
             sourceSize: 40
 
             highlightMode: "indicator"
@@ -59,30 +59,30 @@ Rectangle {
         }
         DesktopSidebarItem {
             source: "qrc:/assets/icons/material-symbols/duotone/insert_chart.svg"
-            text: "刻度定义"
+            // text: "标定配置"
             sourceSize: 40
 
-            // highlightMode: "indicator"
-            // highlighted: (appContent.state === "Device")
-            // onClicked: screenDevice.loadScreen()
+            highlightMode: "indicator"
+            highlighted: (appContent.state === "Calibration")
+            onClicked: screenCalib.loadScreen()
         }
         DesktopSidebarItem {
             source: "qrc:/assets/icons/material-symbols/duotone/chart_data.svg"
-            text: "质控图"
+            // text: "质控图"
             sourceSize: 40
 
-            // highlightMode: "indicator"
-            // highlighted: (appContent.state === "Device")
-            // onClicked: screenDevice.loadScreen()
+            highlightMode: "indicator"
+            highlighted: (appContent.state === "QualityControl")
+            onClicked: screenQC.loadScreen()
         }
         DesktopSidebarItem {
             source: "qrc:/assets/icons/bootstrap/database.svg"
-            text: "数据库"
+            // text: "数据库"
             sourceSize: 40
 
-            // highlightMode: "indicator"
-            // highlighted: (appContent.state === "Device")
-            // onClicked: screenDevice.loadScreen()
+            highlightMode: "indicator"
+            highlighted: (appContent.state === "Database")
+            onClicked: screenDatabase.loadScreen()
         }
     }
 
@@ -95,31 +95,21 @@ Rectangle {
         anchors.bottomMargin: 12
 
         DesktopSidebarItem {
-            source: "qrc:/assets/icons/material-icons/duotone/tune.svg"
-            sourceSize: 40
-
-            highlightMode: "indicator"
-            highlighted: (appContent.state === "Settings")
-
-            onClicked: screenSettings.loadScreen()
-        }
-
-        DesktopSidebarItem {
             source: "qrc:/assets/icons/material-icons/duotone/info.svg"
             sourceSize: 40
 
             highlightMode: "indicator"
-            highlighted: (appContent.state === "About")
+            highlighted: (appContent.state === "Demo")
 
-            onClicked: screenAbout.loadScreen()
+            onClicked: screenDemo.loadScreen()
         }
 
-        DesktopSidebarItem {
-            source: "qrc:/assets/icons/material-icons/duotone/exit_to_app.svg"
-            sourceSize: 40
-            highlightMode: "circle"
-            onClicked: Qt.quit()
-        }
+        // DesktopSidebarItem {
+        //     source: "qrc:/assets/icons/material-icons/duotone/exit_to_app.svg"
+        //     sourceSize: 40
+        //     highlightMode: "circle"
+        //     onClicked: Qt.quit()
+        // }
     }
 
     ////////////

@@ -14,7 +14,7 @@ ApplicationWindow {
     background: Image {
         id: contentBkg
         scale: 0.7
-        opacity: 0.08
+        opacity: Theme.isLight ? 0.08 : 0.6
         fillMode: Image.PreserveAspectFit
         source: "qrc:/logos/background.png"
     }
@@ -223,8 +223,20 @@ ApplicationWindow {
         ScreenMainView {
             id: screenMainView
         }
+        ScreenDaq {
+            id: screenDaq
+        }
         ScreenDevice {
             id: screenDevice
+        }
+        ScreenCalib {
+            id: screenCalib
+        }
+        ScreenQC {
+            id: screenQC
+        }
+        ScreenDatabase {
+            id: screenDatabase
         }
         ScreenSettings {
             id: screenSettings
@@ -251,42 +263,110 @@ ApplicationWindow {
             State {
                 name: "MainView"
                 PropertyChanges { target: screenMainView; visible: true; enabled: true; focus: true; }
+                PropertyChanges { target: screenDaq; visible: false; enabled: false; }
                 PropertyChanges { target: screenDevice; visible: false; enabled: false; }
+                PropertyChanges { target: screenCalib; visible: false; enabled: false; }
+                PropertyChanges { target: screenQC; visible: false; enabled: false; }
+                PropertyChanges { target: screenDatabase; visible: false; enabled: false; }
+                PropertyChanges { target: screenSettings; visible: false; enabled: false; }
+                PropertyChanges { target: screenAbout; visible: false; enabled: false; }
+                PropertyChanges { target: screenDemo; visible: false; enabled: false; }
+            },
+            State {
+                name: "Acquisition"
+                PropertyChanges { target: screenMainView; visible: false; enabled: false;}
+                PropertyChanges { target: screenDaq; visible: true; enabled: true; focus: true; }
+                PropertyChanges { target: screenDevice; visible: false; enabled: false; }
+                PropertyChanges { target: screenCalib; visible: false; enabled: false; }
+                PropertyChanges { target: screenQC; visible: false; enabled: false; }
+                PropertyChanges { target: screenDatabase; visible: false; enabled: false; }
                 PropertyChanges { target: screenSettings; visible: false; enabled: false; }
                 PropertyChanges { target: screenAbout; visible: false; enabled: false; }
                 PropertyChanges { target: screenDemo; visible: false; enabled: false; }
             },
             State {
                 name: "Device"
-                PropertyChanges { target: screenMainView; visible: false; enabled: false; }
+                PropertyChanges { target: screenMainView; visible: false; enabled: false;}
+                PropertyChanges { target: screenDaq; visible: false; enabled: false; }
                 PropertyChanges { target: screenDevice; visible: true; enabled: true; focus: true; }
+                PropertyChanges { target: screenCalib; visible: false; enabled: false; }
+                PropertyChanges { target: screenQC; visible: false; enabled: false; }
+                PropertyChanges { target: screenDatabase; visible: false; enabled: false; }
+                PropertyChanges { target: screenSettings; visible: false; enabled: false; }
+                PropertyChanges { target: screenAbout; visible: false; enabled: false; }
+                PropertyChanges { target: screenDemo; visible: false; enabled: false; }
+            },
+            State {
+                name: "Calibration"
+                PropertyChanges { target: screenMainView; visible: false; enabled: false;}
+                PropertyChanges { target: screenDaq; visible: false; enabled: false; }
+                PropertyChanges { target: screenDevice; visible: false; enabled: false; }
+                PropertyChanges { target: screenCalib; visible: true; enabled: true; focus: true; }
+                PropertyChanges { target: screenQC; visible: false; enabled: false; }
+                PropertyChanges { target: screenDatabase; visible: false; enabled: false; }
+                PropertyChanges { target: screenSettings; visible: false; enabled: false; }
+                PropertyChanges { target: screenAbout; visible: false; enabled: false; }
+                PropertyChanges { target: screenDemo; visible: false; enabled: false; }
+            },
+            State {
+                name: "QualityControl"
+                PropertyChanges { target: screenMainView; visible: false; enabled: false;}
+                PropertyChanges { target: screenDaq; visible: false; enabled: false; }
+                PropertyChanges { target: screenDevice; visible: false; enabled: false; }
+                PropertyChanges { target: screenCalib; visible: false; enabled: false; }
+                PropertyChanges { target: screenQC; visible: true; enabled: true; focus: true; }
+                PropertyChanges { target: screenDatabase; visible: false; enabled: false; }
+                PropertyChanges { target: screenSettings; visible: false; enabled: false; }
+                PropertyChanges { target: screenAbout; visible: false; enabled: false; }
+                PropertyChanges { target: screenDemo; visible: false; enabled: false; }
+            },
+            State {
+                name: "Database"
+                PropertyChanges { target: screenMainView; visible: false; enabled: false;}
+                PropertyChanges { target: screenDaq; visible: false; enabled: false; }
+                PropertyChanges { target: screenDevice; visible: false; enabled: false; }
+                PropertyChanges { target: screenCalib; visible: false; enabled: false; }
+                PropertyChanges { target: screenQC; visible: false; enabled: false; }
+                PropertyChanges { target: screenDatabase; visible: true; enabled: true; focus: true; }
                 PropertyChanges { target: screenSettings; visible: false; enabled: false; }
                 PropertyChanges { target: screenAbout; visible: false; enabled: false; }
                 PropertyChanges { target: screenDemo; visible: false; enabled: false; }
             },
             State {
                 name: "Settings"
-                PropertyChanges { target: screenMainView; visible: false; enabled: false; }
+                PropertyChanges { target: screenMainView; visible: false; enabled: false;}
+                PropertyChanges { target: screenDaq; visible: false; enabled: false; }
                 PropertyChanges { target: screenDevice; visible: false; enabled: false; }
+                PropertyChanges { target: screenCalib; visible: false; enabled: false; }
+                PropertyChanges { target: screenQC; visible: false; enabled: false; }
+                PropertyChanges { target: screenDatabase; visible: false; enabled: false; }
                 PropertyChanges { target: screenSettings; visible: true; enabled: true; focus: true; }
                 PropertyChanges { target: screenAbout; visible: false; enabled: false; }
                 PropertyChanges { target: screenDemo; visible: false; enabled: false; }
             },
             State {
                 name: "About"
-                PropertyChanges { target: screenMainView; visible: false; enabled: false; }
+                PropertyChanges { target: screenMainView; visible: false; enabled: false;}
+                PropertyChanges { target: screenDaq; visible: false; enabled: false; }
                 PropertyChanges { target: screenDevice; visible: false; enabled: false; }
+                PropertyChanges { target: screenCalib; visible: false; enabled: false; }
+                PropertyChanges { target: screenQC; visible: false; enabled: false; }
+                PropertyChanges { target: screenDatabase; visible: false; enabled: false; }
                 PropertyChanges { target: screenSettings; visible: false; enabled: false; }
                 PropertyChanges { target: screenAbout; visible: true; enabled: true; focus: true; }
                 PropertyChanges { target: screenDemo; visible: false; enabled: false; }
             },
             State {
                 name: "Demo"
-                PropertyChanges { target: screenMainView; visible: false; enabled: false; }
+                PropertyChanges { target: screenMainView; visible: false; enabled: false;}
+                PropertyChanges { target: screenDaq; visible: false; enabled: false; }
                 PropertyChanges { target: screenDevice; visible: false; enabled: false; }
+                PropertyChanges { target: screenCalib; visible: false; enabled: false; }
+                PropertyChanges { target: screenQC; visible: false; enabled: false; }
+                PropertyChanges { target: screenDatabase; visible: false; enabled: false; }
                 PropertyChanges { target: screenSettings; visible: false; enabled: false; }
-                PropertyChanges { target: screenAbout; visible: false; enabled: false; focus: false; }
-                PropertyChanges { target: screenDemo; visible: true; enabled: true; }
+                PropertyChanges { target: screenAbout; visible: false; enabled: false; }
+                PropertyChanges { target: screenDemo; visible: true; enabled: true; focus: true; }
             }
         ]
     }

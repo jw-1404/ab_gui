@@ -58,6 +58,7 @@ int main(int argc, char *argv[])
       return EXIT_FAILURE;
     }
     settingMgr->setAppThemeCSD(false);
+    settingMgr->setAppTheme("THEME_JW_DARK");
     utilsLanguage->loadLanguage(settingMgr->getAppLanguage());
 
     // ThemeEngine

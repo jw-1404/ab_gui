@@ -61,7 +61,7 @@ T.Button {
 
             width: 6
             visible: (control.highlighted && control.highlightMode === "indicator")
-            color: Theme.colorPrimary
+            color: Theme.colorSidebarIndicator
         }
     }
 

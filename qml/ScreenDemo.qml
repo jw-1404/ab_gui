@@ -9,10 +9,10 @@ Loader {
 
     function loadScreen() {
         // load screen
-        screenMainView.active = true
+        screenDemo.active = true
 
         // change screen
-        appContent.state = "MainView"
+        appContent.state = "Demo"
     }
 
     active: false

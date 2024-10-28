@@ -32,5 +32,9 @@
         <file>main.qml</file>
         <file>ScreenDevice.qml</file>
         <file>ScreenDemo.qml</file>
+        <file>ScreenDaq.qml</file>
+        <file>ScreenCalib.qml</file>
+        <file>ScreenQC.qml</file>
+        <file>ScreenDatabase.qml</file>
     </qresource>
 </RCC>
