@@ -43,7 +43,7 @@ T.Button {
     // animation
     property string animation // available: rotate, fade, both
     property bool animationRunning: false
-    property bool hoverAnimation: isDesktop
+    property bool hoverAnimation: Theme.isDesktop
 
     // tooltip
     property string tooltipText

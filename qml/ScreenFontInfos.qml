@@ -82,7 +82,7 @@ Loader {
 
                     Text {
                         id: legend
-                        Layout.preferredWidth: isDesktop ? 192 : parent.width*0.33
+                        Layout.preferredWidth: Theme.isDesktop ? 192 : parent.width*0.33
                         Layout.alignment: Qt.AlignBaseline
 
                         text: model.text

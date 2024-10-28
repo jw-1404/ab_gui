@@ -63,7 +63,7 @@ T.RangeSlider {
             z: -1
 
             acceptedButtons: Qt.NoButton
-            hoverEnabled: (isDesktop && control.enabled)
+            hoverEnabled: (Theme.isDesktop && control.enabled)
             propagateComposedEvents: false
 
             Rectangle {
@@ -97,7 +97,7 @@ T.RangeSlider {
             z: -1
 
             acceptedButtons: Qt.NoButton
-            hoverEnabled: (isDesktop && control.enabled)
+            hoverEnabled: (Theme.isDesktop && control.enabled)
             propagateComposedEvents: false
 
             Rectangle {

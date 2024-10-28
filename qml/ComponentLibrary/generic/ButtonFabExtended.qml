@@ -23,7 +23,7 @@ T.Button {
     spacing: 6
 
     flat: false
-    hoverEnabled: isDesktop
+    hoverEnabled: Theme.isDesktop
     focusPolicy: Qt.NoFocus
     font.pixelSize: Theme.componentFontSize + 2
     font.bold: true

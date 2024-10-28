@@ -22,7 +22,7 @@ T.Button {
     // settings
     flat: true
     checkable: true
-    hoverEnabled: isDesktop
+    hoverEnabled: Theme.isDesktop
     focusPolicy: Qt.NoFocus
     font.pixelSize: Theme.componentFontSize
     font.bold: false

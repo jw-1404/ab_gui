@@ -146,7 +146,7 @@ Loader {
 
             z: 5
             color: Theme.colorHighContrast
-            visible: isDesktop
+            visible: Theme.isDesktop
 
             Column {
                 id: palette
@@ -246,8 +246,8 @@ Loader {
             contentWidth: parent.width
             contentHeight: contentColumn.height
 
-            boundsBehavior: isDesktop ? Flickable.OvershootBounds : Flickable.DragAndOvershootBounds
-            ScrollBar.vertical: ScrollBarThemed { visible: isDesktop }
+            boundsBehavior: Theme.isDesktop ? Flickable.OvershootBounds : Flickable.DragAndOvershootBounds
+            ScrollBar.vertical: ScrollBarThemed { visible: Theme.isDesktop }
 
             Column {
                 id: contentColumn
@@ -269,7 +269,7 @@ Loader {
 
                     Text {
                         anchors.verticalCenter: parent.verticalCenter
-                        visible: isDesktop
+                        visible: Theme.isDesktop
 
                         text: "Application theme"
                         font.pixelSize: Theme.fontSizeContent

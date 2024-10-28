@@ -142,7 +142,7 @@ Loader {
 
             z: 5
             color: Theme.colorHighContrast
-            visible: isDesktop
+            visible: Theme.isDesktop
 
             Column {
                 id: palette
@@ -208,26 +208,6 @@ Loader {
         }
 
         // CONTENT /////////////////////////////////////////////////////////////
-
-        Column {
-            anchors.right: parent.right
-            anchors.bottom: parent.bottom
-            anchors.margins: Theme.componentMarginXL
-            spacing: Theme.componentMarginXL
-            z: 10
-
-            ButtonFab {
-                anchors.right: parent.right
-                source: "qrc:/assets/icons/material-symbols/add.svg"
-            }
-
-            ButtonFabExtended {
-                anchors.right: parent.right
-                text: "Extended FAB"
-                source: "qrc:/assets/icons/material-symbols/add.svg"
-            }
-        }
-
         Flickable {
             anchors.top: menusArea.bottom
             anchors.left: parent.left
@@ -242,8 +222,8 @@ Loader {
             contentWidth: parent.width
             contentHeight: contentColumn.height
 
-            boundsBehavior: isDesktop ? Flickable.OvershootBounds : Flickable.DragAndOvershootBounds
-            ScrollBar.vertical: ScrollBarThemed { visible: isDesktop }
+            boundsBehavior: Theme.isDesktop ? Flickable.OvershootBounds : Flickable.DragAndOvershootBounds
+            ScrollBar.vertical: ScrollBarThemed { visible: Theme.isDesktop }
 
             Column {
                 id: contentColumn
@@ -265,7 +245,7 @@ Loader {
 
                     Text {
                         anchors.verticalCenter: parent.verticalCenter
-                        visible: isDesktop
+                        visible: Theme.isDesktop
 
                         text: "Application theme"
                         font.pixelSize: Theme.fontSizeContent
@@ -1572,90 +1552,6 @@ Loader {
                         anchors.verticalCenter: parent.verticalCenter
                         editable: true
                         legend: "°"
-                    }
-                }
-
-                ////////////////////////
-
-                ListSeparator {
-                    height: Theme.componentBorderWidth
-                    anchors.leftMargin: -24
-                    anchors.rightMargin: -24
-                }
-
-                Row {
-                    anchors.left: parent.left
-                    anchors.right: parent.right
-                    spacing: Theme.componentMargin
-
-                    ProgressBar {
-                        anchors.verticalCenter: parent.verticalCenter
-                        value: 0.5
-                    }
-
-                    Slider {
-                        anchors.verticalCenter: parent.verticalCenter
-                        value: 0.5
-                    }
-
-                    RangeSlider {
-                        anchors.verticalCenter: parent.verticalCenter
-                        first.value: 0.25
-                        second.value: 0.75
-                    }
-
-                    CheckBox {
-                        anchors.verticalCenter: parent.verticalCenter
-                        text: "CheckBox"
-                    }
-
-                    RadioButton {
-                        anchors.verticalCenter: parent.verticalCenter
-                        text: "RadioButton"
-                    }
-
-                    Switch {
-                        anchors.verticalCenter: parent.verticalCenter
-                        text: "Switch"
-                        checked: true
-                    }
-                }
-
-                Row {
-                    anchors.left: parent.left
-                    anchors.right: parent.right
-                    spacing: Theme.componentMargin
-
-                    TextField {
-                        anchors.verticalCenter: parent.verticalCenter
-                        width: 256
-                        text: "Text Field"
-                    }
-
-                    ComboBox {
-                        anchors.verticalCenter: parent.verticalCenter
-                        width: 256
-
-                        model: ListModel {
-                            ListElement { text: "ComboBox"; }
-                            ListElement { text: "combobox item1"; }
-                            ListElement { text: "combobox item2"; }
-                        }
-                    }
-
-                    Button {
-                        anchors.verticalCenter: parent.verticalCenter
-                        text: "Button"
-                    }
-
-                    RoundButton {
-                        anchors.verticalCenter: parent.verticalCenter
-                        text: "+"
-                    }
-
-                    SpinBox {
-                        anchors.verticalCenter: parent.verticalCenter
-                        editable: true
                     }
                 }
 

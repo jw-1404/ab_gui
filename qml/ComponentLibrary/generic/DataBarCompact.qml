@@ -68,10 +68,10 @@ Item {
                 anchors.fill: parent
 
                 radius: 4
-                clip: isDesktop
+                clip: Theme.isDesktop
                 color: control.colorBackground
 
-                layer.enabled: !isDesktop
+                layer.enabled: !Theme.isDesktop
                 layer.effect: MultiEffect {
                     maskEnabled: true
                     maskInverted: false

@@ -250,7 +250,7 @@ Item {
 
         // Validate the result (or set the default)
         if (themeIndex < 0 || themeIndex >= ThemeEngine.THEME_LAST) {
-            if (isDesktop) themeIndex = ThemeEngine.THEME_DESKTOP_LIGHT
+            if (Theme.isDesktop) themeIndex = ThemeEngine.THEME_DESKTOP_LIGHT
             else if (isMobile) themeIndex = ThemeEngine.THEME_MOBILE_LIGHT
             else themeIndex = 1
         }

@@ -5,7 +5,7 @@ import ThemeEngine
 TextEdit {
     readOnly: false
 
-    selectByMouse: isDesktop
+    selectByMouse: Theme.isDesktop
     selectionColor: Theme.colorPrimary
     selectedTextColor: "white"
 

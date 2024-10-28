@@ -83,7 +83,7 @@ T.Slider {
             }
             textFormat: Text.PlainText
             font.bold: true
-            font.pixelSize: isDesktop ? 12 : 13
+            font.pixelSize: Theme.isDesktop ? 12 : 13
             fontSizeMode: Text.Fit
             minimumPixelSize: Theme.fontSizeContentVerySmall
             color: control.colorText

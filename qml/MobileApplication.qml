@@ -15,7 +15,7 @@ ApplicationWindow {
     visible: true
 
     property bool isHdpi: (utilsScreen.screenDpi >= 128 || utilsScreen.screenPar >= 2.0)
-    property bool isDesktop: (Qt.platform.os !== "ios" && Qt.platform.os !== "android")
+    property bool Theme.isDesktop: (Qt.platform.os !== "ios" && Qt.platform.os !== "android")
     property bool isMobile: (Qt.platform.os === "ios" || Qt.platform.os === "android")
     property bool isPhone: ((Qt.platform.os === "ios" || Qt.platform.os === "android") && (utilsScreen.screenSize < 7.0))
     property bool isTablet: ((Qt.platform.os === "ios" || Qt.platform.os === "android") && (utilsScreen.screenSize >= 7.0))
@@ -227,7 +227,7 @@ ApplicationWindow {
         }
     }
 
-    property bool wideMode: (isDesktop && width >= 560) || (isTablet && width >= 480)
+    property bool wideMode: (Theme.isDesktop && width >= 560) || (isTablet && width >= 480)
     property bool wideWideMode: (width >= 640)
 
     // QML /////////////////////////////////////////////////////////////////////

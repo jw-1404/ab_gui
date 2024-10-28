@@ -19,7 +19,7 @@ T.ScrollBar {
 
     minimumSize: (orientation === Qt.Horizontal) ? (height / width) : (width / height)
 
-    property int radius: isDesktop ? 0 : 8
+    property int radius: Theme.isDesktop ? 0 : 8
 
     property color colorBackground: Theme.colorBackground
     property color colorMoving: Theme.colorSecondary

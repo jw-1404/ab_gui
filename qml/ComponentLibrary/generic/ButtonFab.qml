@@ -18,7 +18,7 @@ T.Button {
     implicitHeight: implicitBackgroundHeight
 
     flat: false
-    hoverEnabled: isDesktop
+    hoverEnabled: Theme.isDesktop
     focusPolicy: Qt.NoFocus
 
     // settings
