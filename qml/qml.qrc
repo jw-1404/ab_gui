@@ -36,5 +36,7 @@
         <file>ScreenCalib.qml</file>
         <file>ScreenQC.qml</file>
         <file>ScreenDatabase.qml</file>
+        <file>ScreenPlayground.qml</file>
     </qresource>
+    <qresource prefix="/"/>
 </RCC>

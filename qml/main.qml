@@ -247,6 +247,9 @@ ApplicationWindow {
         ScreenDemo {
             id: screenDemo
         }
+        ScreenPlayground {
+            id: screenPlayground
+        }
 
         Component.onCompleted: {
             screenMainView.loadScreen()
@@ -271,6 +274,7 @@ ApplicationWindow {
                 PropertyChanges { target: screenSettings; visible: false; enabled: false; }
                 PropertyChanges { target: screenAbout; visible: false; enabled: false; }
                 PropertyChanges { target: screenDemo; visible: false; enabled: false; }
+                PropertyChanges { target: screenPlayground; visible: false; enabled: false; }
             },
             State {
                 name: "Acquisition"
@@ -283,6 +287,7 @@ ApplicationWindow {
                 PropertyChanges { target: screenSettings; visible: false; enabled: false; }
                 PropertyChanges { target: screenAbout; visible: false; enabled: false; }
                 PropertyChanges { target: screenDemo; visible: false; enabled: false; }
+                PropertyChanges { target: screenPlayground; visible: false; enabled: false; }
             },
             State {
                 name: "Device"
@@ -295,6 +300,7 @@ ApplicationWindow {
                 PropertyChanges { target: screenSettings; visible: false; enabled: false; }
                 PropertyChanges { target: screenAbout; visible: false; enabled: false; }
                 PropertyChanges { target: screenDemo; visible: false; enabled: false; }
+                PropertyChanges { target: screenPlayground; visible: false; enabled: false; }
             },
             State {
                 name: "Calibration"
@@ -307,6 +313,7 @@ ApplicationWindow {
                 PropertyChanges { target: screenSettings; visible: false; enabled: false; }
                 PropertyChanges { target: screenAbout; visible: false; enabled: false; }
                 PropertyChanges { target: screenDemo; visible: false; enabled: false; }
+                PropertyChanges { target: screenPlayground; visible: false; enabled: false; }
             },
             State {
                 name: "QualityControl"
@@ -319,6 +326,7 @@ ApplicationWindow {
                 PropertyChanges { target: screenSettings; visible: false; enabled: false; }
                 PropertyChanges { target: screenAbout; visible: false; enabled: false; }
                 PropertyChanges { target: screenDemo; visible: false; enabled: false; }
+                PropertyChanges { target: screenPlayground; visible: false; enabled: false; }
             },
             State {
                 name: "Database"
@@ -331,6 +339,7 @@ ApplicationWindow {
                 PropertyChanges { target: screenSettings; visible: false; enabled: false; }
                 PropertyChanges { target: screenAbout; visible: false; enabled: false; }
                 PropertyChanges { target: screenDemo; visible: false; enabled: false; }
+                PropertyChanges { target: screenPlayground; visible: false; enabled: false; }
             },
             State {
                 name: "Settings"
@@ -343,6 +352,7 @@ ApplicationWindow {
                 PropertyChanges { target: screenSettings; visible: true; enabled: true; focus: true; }
                 PropertyChanges { target: screenAbout; visible: false; enabled: false; }
                 PropertyChanges { target: screenDemo; visible: false; enabled: false; }
+                PropertyChanges { target: screenPlayground; visible: false; enabled: false; }
             },
             State {
                 name: "About"
@@ -355,6 +365,7 @@ ApplicationWindow {
                 PropertyChanges { target: screenSettings; visible: false; enabled: false; }
                 PropertyChanges { target: screenAbout; visible: true; enabled: true; focus: true; }
                 PropertyChanges { target: screenDemo; visible: false; enabled: false; }
+                PropertyChanges { target: screenPlayground; visible: false; enabled: false; }
             },
             State {
                 name: "Demo"
@@ -367,6 +378,20 @@ ApplicationWindow {
                 PropertyChanges { target: screenSettings; visible: false; enabled: false; }
                 PropertyChanges { target: screenAbout; visible: false; enabled: false; }
                 PropertyChanges { target: screenDemo; visible: true; enabled: true; focus: true; }
+                PropertyChanges { target: screenPlayground; visible: false; enabled: false; }
+            },
+            State {
+                name: "Playground"
+                PropertyChanges { target: screenMainView; visible: false; enabled: false;}
+                PropertyChanges { target: screenDaq; visible: false; enabled: false; }
+                PropertyChanges { target: screenDevice; visible: false; enabled: false; }
+                PropertyChanges { target: screenCalib; visible: false; enabled: false; }
+                PropertyChanges { target: screenQC; visible: false; enabled: false; }
+                PropertyChanges { target: screenDatabase; visible: false; enabled: false; }
+                PropertyChanges { target: screenSettings; visible: false; enabled: false; }
+                PropertyChanges { target: screenAbout; visible: false; enabled: false; }
+                PropertyChanges { target: screenDemo; visible: false; enabled: false; }
+                PropertyChanges { target: screenPlayground; visible: true; enabled: true; focus: true; }
             }
         ]
     }

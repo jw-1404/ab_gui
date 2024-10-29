@@ -103,6 +103,15 @@ Rectangle {
 
             onClicked: screenDemo.loadScreen()
         }
+        DesktopSidebarItem {
+            source: "qrc:/assets/icons/material-symbols/media/play_circle.svg"
+            sourceSize: 40
+
+            highlightMode: "indicator"
+            highlighted: (appContent.state === "Playground")
+
+            onClicked: screenPlayground.loadScreen()
+        }
 
         // DesktopSidebarItem {
         //     source: "qrc:/assets/icons/material-icons/duotone/exit_to_app.svg"
