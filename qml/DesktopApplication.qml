@@ -10,7 +10,7 @@ ApplicationWindow {
     color: settingsManager.appThemeCSD ? "transparent" : Theme.colorBackground
 
     property bool isHdpi: (utilsScreen.screenDpi >= 128 || utilsScreen.screenPar >= 2.0)
-    property bool Theme.isDesktop: true
+    property bool isDesktop: true
     property bool isMobile: false
     property bool isPhone: false
     property bool isTablet: false

@@ -53,9 +53,9 @@ add_subdirectory(src/AppUtils)
 target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE AppUtils)
 
 # SingleApplication
-set(QAPPLICATION_CLASS QGuiApplication)
-add_subdirectory(src/SingleApplication)
-target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE SingleApplication)
+# set(QAPPLICATION_CLASS QGuiApplication)
+# add_subdirectory(src/SingleApplication)
+# target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE SingleApplication)
 
 # Qt
 target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE
