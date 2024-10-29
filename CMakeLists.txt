@@ -4,8 +4,6 @@ project(abgui VERSION 0.1 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTORCC ON)
 
 string(TIMESTAMP CURRENT_TIMESTAMP "%s" UTC)
 set(APP_NAME ${CMAKE_PROJECT_NAME})
@@ -27,9 +25,14 @@ message(STATUS "[PROJECT] QT_HOST_PATH              = ${QT_HOST_PATH}")
 
 ################################################################################
 
-find_package(Qt6 REQUIRED COMPONENTS Core Gui Qml Quick QuickControls2 Svg)
+# [bugfix] needed, should not be needed if qt_standard_project_setup is invoked
+set(CMAKE_AUTOMOC ON)
+set(CMAKE_AUTORCC ON)
 
+find_package(Qt6 REQUIRED COMPONENTS Core Gui Qml Quick QuickControls2 Svg)
 qt_standard_project_setup(REQUIRES 6.5)
+
+################################################################################
 
 qt_add_executable(${CMAKE_PROJECT_NAME}
     src/SettingsManager.cpp src/SettingsManager.h
@@ -56,12 +59,12 @@ target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE SingleApplication)
 
 # Qt
 target_link_libraries(${CMAKE_PROJECT_NAME} PRIVATE
-    Qt6::Core
-    Qt6::Gui
-    Qt6::Qml
-    Qt6::Quick
-    Qt6::QuickControls2
-    Qt6::Svg
+    Qt::Core
+    Qt::Gui
+    Qt::Qml
+    Qt::Quick
+    Qt::QuickControls2
+    Qt::Svg
 )
 
 ################################################################################
@@ -88,12 +91,13 @@ endif()
 
 ################################################################################
 
-if(lupdate_only)
-    target_sources(${CMAKE_PROJECT_NAME} PUBLIC
-        qml/*.js qml/*.qml
-        qml/components/*.qml
-    )
-endif()
+## language translation
+# if(lupdate_only)
+#     target_sources(${CMAKE_PROJECT_NAME} PUBLIC
+#         qml/*.js qml/*.qml
+#         qml/components/*.qml
+#     )
+# endif()
 
 ################################################################################
 
